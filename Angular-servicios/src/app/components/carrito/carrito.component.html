@@ -1,0 +1,37 @@
+<header class="encabezado">
+  <h2>Carrito</h2>
+  <p>{{ carritoSvc.totalItems() }} item(s)</p>
+</header>
+
+@if (carritoSvc.estaVacio()) {
+  <p class="vacio">Tu carrito esta vacio.</p>
+} @else {
+  <ul class="lista">
+    @for (item of carritoSvc.items(); track item.producto.id) {
+      <li>
+        <div>
+          <strong>{{ item.producto.nombre }}</strong>
+          <p>{{ item.producto.precio | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} c/u</p>
+        </div>
+
+        <div class="controles">
+          <button type="button" class="secundario" (click)="disminuirCantidad(item.producto.id, item.cantidad)">
+            -
+          </button>
+          <span>{{ item.cantidad }}</span>
+          <button type="button" class="secundario" (click)="aumentarCantidad(item.producto.id, item.cantidad)">
+            +
+          </button>
+          <button type="button" class="danger" (click)="carritoSvc.quitarProducto(item.producto.id)">
+            Quitar
+          </button>
+        </div>
+      </li>
+    }
+  </ul>
+
+  <p class="total">
+    Total: {{ carritoSvc.totalPrecio() | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+  </p>
+  <button type="button" class="vaciar" (click)="carritoSvc.vaciarCarrito()">Vaciar carrito</button>
+}

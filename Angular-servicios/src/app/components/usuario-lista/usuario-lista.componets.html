@@ -1,0 +1,40 @@
+<section class="contenedor">
+  <header class="encabezado">
+    <h2>Gestion de Usuarios</h2>
+    <p>Total: {{ svc.totalUsuarios() }} · Activos: {{ svc.usuariosActivos().length }}</p>
+  </header>
+
+  <div class="form-grid">
+    <input [(ngModel)]="nuevoNombre" placeholder="Nombre del usuario" />
+    <input [(ngModel)]="nuevoEmail" placeholder="Correo electronico" />
+    <button type="button" (click)="agregar()">Agregar</button>
+  </div>
+
+  <div class="busqueda">
+    <input
+      [ngModel]="terminoBusqueda()"
+      (ngModelChange)="terminoBusqueda.set($event)"
+      placeholder="Buscar por nombre"
+    />
+  </div>
+
+  <ul class="lista">
+    @for (usuario of usuariosFiltrados(); track usuario.id) {
+      <li [class.inactivo]="!usuario.activo">
+        <div>
+          <strong>{{ usuario.nombre }}</strong>
+          <p>{{ usuario.email }}</p>
+        </div>
+
+        <div class="acciones">
+          <button type="button" class="secundario" (click)="svc.toggleActivo(usuario.id)">
+            {{ usuario.activo ? 'Desactivar' : 'Activar' }}
+          </button>
+          <button type="button" class="danger" (click)="svc.eliminarUsuario(usuario.id)">Eliminar</button>
+        </div>
+      </li>
+    } @empty {
+      <li class="vacio">No hay usuarios para mostrar.</li>
+    }
+  </ul>
+</section>

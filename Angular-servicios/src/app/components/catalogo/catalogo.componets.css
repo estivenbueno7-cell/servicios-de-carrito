@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.encabezado h2 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.encabezado p {
+  margin: 6px 0 14px;
+  color: #64748b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #d6dce6;
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.precio {
+  margin: 0 0 10px;
+  color: #0f766e;
+  font-weight: 700;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  background: #0f766e;
+  color: #ffffff;
+  cursor: pointer;
+}

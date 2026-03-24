@@ -1,0 +1,14 @@
+<header class="encabezado">
+  <h2>Catalogo de Productos</h2>
+  <p>Items en carrito: {{ carritoSvc.totalItems() }}</p>
+</header>
+
+<section class="grid">
+  @for (producto of productoSvc.productos(); track producto.id) {
+    <article class="card">
+      <h3>{{ producto.nombre }}</h3>
+      <p class="precio">{{ producto.precio | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</p>
+      <button type="button" (click)="carritoSvc.agregarProducto(producto)">Agregar</button>
+    </article>
+  }
+</section>

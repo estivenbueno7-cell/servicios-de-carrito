@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+.encabezado {
+  margin-bottom: 14px;
+}
+
+.encabezado h2 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.encabezado p {
+  margin: 6px 0 0;
+  color: #64748b;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.9fr 1fr;
+  gap: 14px;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d6dce6;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+@media (max-width: 930px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
